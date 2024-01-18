@@ -1,15 +1,16 @@
-import React, { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SortingComponent from "./SortingComponent";
 import FilterComponent from "./FilterComponent";
 import PaginationComponent from "./PaginationComponent";
-import TableContentComponent from "./TableComponent";
-import { IAccount } from "../models/IAccount";
+import TableComponent from "./TableComponent";
 
-interface ITableProps {
-  data: IAccount[];
+interface ITableProps<T> {
+  data: T[];
+  tableHeader: () => JSX.Element;
+  tableRow: (item: T) => JSX.Element;
 }
 
-const Table: FC<ITableProps> = ({ data }) => {
+function Table<T>({ data, tableHeader, tableRow }: ITableProps<T>) {
   const [currentData, setCurrentData] = useState(data);
   const [currentPage, setCurrentPage] = useState(1);
   /*-------------------------*/
@@ -18,7 +19,7 @@ const Table: FC<ITableProps> = ({ data }) => {
   /*-------------------------*/
   const startIndex = (currentPage - 1) * limit;
   const endIndex = startIndex + limit;
-  const currentPageData: IAccount[] = data.slice(startIndex, endIndex);
+  const currentPageData: T[] = data.slice(startIndex, endIndex);
   /*-------------------------*/
   useEffect(() => {
     setCurrentData(currentPageData);
@@ -32,7 +33,11 @@ const Table: FC<ITableProps> = ({ data }) => {
     <>
       <SortingComponent />
       <FilterComponent />
-      <TableContentComponent data={currentData} />
+      <TableComponent
+        data={currentData}
+        tableHeader={tableHeader}
+        tableRow={tableRow}
+      />
       <PaginationComponent
         total={totalPages}
         current={currentPage}
@@ -40,6 +45,6 @@ const Table: FC<ITableProps> = ({ data }) => {
       />
     </>
   );
-};
+}
 
 export default Table;

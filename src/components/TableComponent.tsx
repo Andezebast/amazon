@@ -1,35 +1,19 @@
-import React, { FC } from "react";
-import { IAccount } from "../models/IAccount";
 import Table from "react-bootstrap/Table";
 
-interface ICustomTableProps {
-  data: IAccount[];
+interface ICustomTableProps<T> {
+  data: T[];
+  tableHeader: () => JSX.Element;
+  tableRow: (item: T) => JSX.Element;
 }
 
-const CustomTable: FC<ICustomTableProps> = ({ data }) => {
+function CustomTable<T>({ data, tableHeader, tableRow }: ICustomTableProps<T>) {
   /*-------------------------*/
   return (
     <Table striped bordered hover responsive>
-      <thead>
-        <tr>
-          <th>Account ID</th>
-          <th>Email</th>
-          <th>AuthToken</th>
-          <th>creationDate</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr key={index}>
-            <td>{item.accountid}</td>
-            <td>{item.email}</td>
-            <td>{item.authToken}</td>
-            <td>{item.creationDate}</td>
-          </tr>
-        ))}
-      </tbody>
+      <thead>{tableHeader()}</thead>
+      <tbody>{data.map((item) => tableRow(item))}</tbody>
     </Table>
   );
-};
+}
 
 export default CustomTable;
