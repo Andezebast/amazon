@@ -1,9 +1,11 @@
 import React, { FC } from "react";
-import CustomTableContent from "../components/CustomTableContent/CustomTableContent";
+import CustomTableContent from "../components/CustomTableWrapper/CustomTableWrapper";
 import { campaign } from "../data";
 import { ICampaign } from "../models/ICampaign";
 import { useAppSelector } from "../hooks/redux";
 
+const filterField: string[] = ["campaignid"];
+/*-------------------------*/
 const Campaign: FC = () => {
   /*-------------------------*/
   const profileID = useAppSelector((state) => state.dataReducer.profileID);
@@ -44,14 +46,15 @@ const Campaign: FC = () => {
         <option value="none" disabled>
           Виберіть значення
         </option>
-        <option value="ascending">Cost Ascending</option>
-        <option value="descending">Cost Descending</option>
+        <option value="costAscending">Cost Ascending</option>
+        <option value="costDescending">Cost Descending</option>
+        <option value="clickAscending">Clicks Ascending</option>
+        <option value="clickDescending">Clicks Descending</option>
         <option value="date">By Date</option>
       </select>
     );
   };
   /*-------------------------*/
-  const filterField: string[] = ["campaignid"];
   function filterTable(data: ICampaign[], value: string) {
     let filterData: ICampaign[] = [];
 
@@ -68,7 +71,7 @@ const Campaign: FC = () => {
   function sortingTable(data: ICampaign[], value: string) {
     let sortingData: ICampaign[] = [];
     switch (value) {
-      case "ascending":
+      case "costAscending":
         sortingData = data.sort((a, b) => {
           const costA = a.cost.toLowerCase();
           const costB = b.cost.toLowerCase();
@@ -81,7 +84,7 @@ const Campaign: FC = () => {
           return 0;
         });
         break;
-      case "descending":
+      case "costDescending":
         sortingData = data.sort((a, b) => {
           const costA = a.cost.toLowerCase();
           const costB = b.cost.toLowerCase();
@@ -89,6 +92,32 @@ const Campaign: FC = () => {
             return -1;
           }
           if (costA < costB) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      case "clickAscending":
+        sortingData = data.sort((a, b) => {
+          const clicksA = a.clicks.toLowerCase();
+          const clicksB = b.clicks.toLowerCase();
+          if (clicksA < clicksB) {
+            return -1;
+          }
+          if (clicksA > clicksB) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      case "clickDescending":
+        sortingData = data.sort((a, b) => {
+          const clicksA = a.clicks.toLowerCase();
+          const clicksB = b.clicks.toLowerCase();
+          if (clicksA > clicksB) {
+            return -1;
+          }
+          if (clicksA < clicksB) {
             return 1;
           }
           return 0;
@@ -116,7 +145,7 @@ const Campaign: FC = () => {
           margin: "0",
         }}
       >
-        Campaign Page!
+        Campaign for Profile ID №{profileID}
       </p>
       <CustomTableContent
         data={currentCampaignMass}

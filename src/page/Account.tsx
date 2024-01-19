@@ -1,11 +1,13 @@
 import React, { FC } from "react";
-import CustomTableContent from "../components/CustomTableContent/CustomTableContent";
+import CustomTableContent from "../components/CustomTableWrapper/CustomTableWrapper";
 import { accounts } from "../data";
 import { IAccount } from "../models/IAccount";
 import { useAppDispatch } from "../hooks/redux";
 import { dataSlice } from "../store/dataSlice";
 import { useNavigate } from "react-router-dom";
 
+const filterField: string[] = ["email", "authToken"];
+/*------------------------------*/
 const Account: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -54,10 +56,8 @@ const Account: FC = () => {
     );
   };
   /*-------------------------*/
-  const filterField: string[] = ["email", "authToken"];
   function filterTable(data: IAccount[], value: string) {
     let filterData: IAccount[] = [];
-
     filterField.forEach((field) => {
       filterData = filterData.concat(
         data.filter((item) =>

@@ -1,0 +1,12 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+/* .pagination .page-item .page-link {
+  color: black;
+}
+.pagination .page-item.active .page-link {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.5);
+  color: white;
+} */

@@ -1,5 +1,6 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Pagination from "react-bootstrap/Pagination";
+import "./CustomPagination.css";
 
 interface IPaginationComponentProps {
   total: number;

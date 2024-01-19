@@ -3,7 +3,7 @@ import CustomSorting from "../CustomSorting/CustomSorting";
 import CustomFilter from "../CustomFilter/CustomFilter";
 import CustomTable from "../CustomTable/CustomTable";
 import CustomPagination from "../CustomPagination/CustomPagination";
-import "./CustomTableContent.css";
+import "./CustomTableWrapper.css";
 
 interface ITableProps<T> {
   data: T[];

@@ -1,4 +1,5 @@
 import Table from "react-bootstrap/Table";
+import "./CustomTable.css";
 
 interface ICustomTableProps<T> {
   data: T[];
@@ -9,10 +10,16 @@ interface ICustomTableProps<T> {
 function CustomTable<T>({ data, tableHeader, tableRow }: ICustomTableProps<T>) {
   /*-------------------------*/
   return (
-    <Table striped bordered hover responsive>
-      <thead>{tableHeader()}</thead>
-      <tbody>{data.map((item) => tableRow(item))}</tbody>
-    </Table>
+    <>
+      {data.length ? (
+        <Table striped bordered hover responsive>
+          <thead>{tableHeader()}</thead>
+          <tbody>{data.map((item) => tableRow(item))}</tbody>
+        </Table>
+      ) : (
+        <div className="custom-table-empty">Table is Empty!</div>
+      )}
+    </>
   );
 }
 

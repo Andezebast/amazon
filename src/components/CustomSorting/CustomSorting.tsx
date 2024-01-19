@@ -1,3 +1,4 @@
+import ArrowSvg from "../../svg/ArrowSvg";
 import "./CustomSorting.css";
 
 interface ISortingProps<T> {
@@ -20,6 +21,7 @@ function Sorting<T>({
   return (
     <div className="sorting">
       {tableSelect(currentPageData, sortingTable, setCurrentData)}
+      <ArrowSvg />
     </div>
   );
 }

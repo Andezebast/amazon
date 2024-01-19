@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import CustomTableContent from "../components/CustomTableContent/CustomTableContent";
+import CustomTableContent from "../components/CustomTableWrapper/CustomTableWrapper";
 import { profile } from "../data";
 import { IProfile } from "../models/IProfile";
 import { useAppSelector } from "../hooks/redux";
@@ -7,6 +7,8 @@ import { useAppDispatch } from "../hooks/redux";
 import { dataSlice } from "../store/dataSlice";
 import { useNavigate } from "react-router-dom";
 
+const filterField: string[] = ["profileid", "country", "marketplace"];
+/*-------------------------*/
 const Profile: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -57,7 +59,6 @@ const Profile: FC = () => {
     );
   };
   /*-------------------------*/
-  const filterField: string[] = ["country", "marketplace"];
   function filterTable(data: IProfile[], value: string) {
     let filterData: IProfile[] = [];
 
@@ -115,7 +116,7 @@ const Profile: FC = () => {
           margin: "0",
         }}
       >
-        Profile Page!
+        Profile for Account ID №{accountID}
       </p>
       <CustomTableContent
         data={currentProfileMass}
