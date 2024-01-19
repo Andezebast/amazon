@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import CustomSorting from "../CustomSorting/CustomSorting";
 import CustomFilter from "../CustomFilter/CustomFilter";
-import CustomTable from "../CustomTable";
-import CustomPagination from "../CustomPagination";
+import CustomTable from "../CustomTable/CustomTable";
+import CustomPagination from "../CustomPagination/CustomPagination";
 import "./CustomTableContent.css";
 
 interface ITableProps<T> {
@@ -72,11 +72,13 @@ function Table<T>({
         tableHeader={tableHeader}
         tableRow={tableRow}
       />
-      <CustomPagination
-        total={totalPages}
-        current={currentPage}
-        onChangePage={handleChangePage}
-      />
+      {totalPages > 1 && (
+        <CustomPagination
+          total={totalPages}
+          current={currentPage}
+          onChangePage={handleChangePage}
+        />
+      )}
     </div>
   );
 }

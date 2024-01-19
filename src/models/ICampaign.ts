@@ -1,7 +1,8 @@
 export interface ICampaign {
   campaignid: string;
-  clicks: number;
-  cost: number;
+  clicks: string;
+  cost: string;
   date: string;
   profileid: string;
+  [key: string]: string;
 }

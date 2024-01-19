@@ -3,4 +3,5 @@ export interface IProfile {
   country: string;
   marketplace: string;
   accountid: string;
+  [key: string]: string;
 }

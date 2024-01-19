@@ -1,8 +1,15 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import CustomTableContent from "../components/CustomTableContent/CustomTableContent";
 import { accounts } from "../data";
 import { IAccount } from "../models/IAccount";
+import { useAppDispatch } from "../hooks/redux";
+import { dataSlice } from "../store/dataSlice";
+import { useNavigate } from "react-router-dom";
+
 const Account: FC = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  /*------------------------------*/
   const tableHeader = () => {
     return (
       <tr>
@@ -14,8 +21,12 @@ const Account: FC = () => {
     );
   };
   const tableRow = (item: IAccount) => {
+    const handleRowEvent = (id: string) => {
+      dispatch(dataSlice.actions.getAccountID(id));
+      navigate("/profile");
+    };
     return (
-      <tr key={item.accountid}>
+      <tr key={item.accountid} onClick={() => handleRowEvent(item.accountid)}>
         <td>{item.accountid}</td>
         <td>{item.email}</td>
         <td>{item.authToken}</td>
@@ -36,9 +47,9 @@ const Account: FC = () => {
         <option value="none" disabled>
           Виберіть значення
         </option>
-        <option value="alphabet">A-Z</option>
-        <option value="reverse">Z-A</option>
-        <option value="data">By date</option>
+        <option value="alphabet">Email A-Z</option>
+        <option value="reverse">Email Z-A</option>
+        <option value="data">By Date</option>
       </select>
     );
   };
@@ -92,24 +103,8 @@ const Account: FC = () => {
           const dateB = new Date(b.creationDate.split(".").reverse().join("-"));
           return dateA.getTime() - dateB.getTime();
         });
-
-        // const dateComparison = new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime();
-        // sortingData = data.sort((a, b) => {
-        //   const dateA = new Date(a.creationDate);
-        //   const dateB = new Date(b.creationDate);
-        //   console.log(dateA, "dateA");
-        //   console.log(dateB, "dateB");
-        //   if (dateA > dateB) {
-        //     return 1;
-        //   }
-        //   if (dateA < dateB) {
-        //     return -1;
-        //   }
-        //   return 0;
-        // });
         break;
     }
-    console.log(sortingData, "sortingData");
     return sortingData;
   }
   /*-------------------------*/
