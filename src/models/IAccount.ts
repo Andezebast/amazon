@@ -3,4 +3,5 @@ export interface IAccount {
   email: string;
   authToken: string;
   creationDate: string;
+  [key: string]: string;
 }

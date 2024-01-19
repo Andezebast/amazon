@@ -5,32 +5,32 @@ import { IProfile } from "./models/IProfile";
 export const accounts: IAccount[] = [
   {
     accountid: "1",
-    email: "andrey@gmail.com",
-    authToken: "eyJhbGciOiJIUcI1NiIsInR5cCI6IkpXVCJ9",
-    creationDate: "20.10.1995",
-  },
-  {
-    accountid: "2",
-    email: "dima@gmail.com",
-    authToken: "eyJhbGciOiJIUcI1NiIsInR5cCI6IkpXVCJ9",
-    creationDate: "25.05.1998",
-  },
-  {
-    accountid: "3",
     email: "vasya@gmail.com",
     authToken: "eyJhbGciOiJIUcI1NiIsInR5cCI6IkpXVCJ9",
     creationDate: "05.11.1992",
   },
   {
-    accountid: "4",
+    accountid: "2",
     email: "sasha@gmail.com",
-    authToken: "eyJhbGciOiJIUcI1NiIsInR5cCI6IkpXVCJ9",
+    authToken: "WLiOiIxzdMjM0NSIsIm5hbWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0K",
     creationDate: "28.06.1999",
+  },
+  {
+    accountid: "3",
+    email: "andrey@gmail.com",
+    authToken: "LIHjWCBORSWMEibq-tnT8ue_deUqZx1K0XxCOXZRrBI",
+    creationDate: "20.10.1995",
+  },
+  {
+    accountid: "4",
+    email: "dima@gmail.com",
+    authToken: "eyJhbGciOiJIUcI1NiIsInR5cCI6IkpXVCJ9",
+    creationDate: "25.05.1998",
   },
   {
     accountid: "5",
     email: "nikita@gmail.com",
-    authToken: "eyJhbGciOiJIUcI1NiIsInR5cCI6IkpXVCJ9",
+    authToken: "WLiOiIxzdMjM0NSIsIm5hbWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0K",
     creationDate: "06.06.1995",
   },
   {
@@ -48,7 +48,7 @@ export const accounts: IAccount[] = [
   {
     accountid: "8",
     email: "oleg@gmail.com",
-    authToken: "eyJhbGciOiJIUcI1NiIsInR5cCI6IkpXVCJ9",
+    authToken: "WLiOiIxzdMjM0NSIsIm5hbWUiOiJKb2huIEdvbGQiLCJhZG1pbiI6dHJ1ZX0K",
     creationDate: "27.02.2001",
   },
   {
@@ -60,8 +60,8 @@ export const accounts: IAccount[] = [
   {
     accountid: "10",
     email: "sasha@gmail.com",
-    authToken: "eyJhbGciOiJIUcI1NiIsInR5cCI6IkpXVCJ9",
-    creationDate: "50.05.1992",
+    authToken: "LIHjWCBORSWMEibq-tnT8ue_deUqZx1K0XxCOXZRrBI",
+    creationDate: "27.05.1992",
   },
 ];
 /*----------------------------*/
